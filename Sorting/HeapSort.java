@@ -62,7 +62,7 @@ public class HeapSort {
     }
 
     public static void main(String[] args) {
-        int[] intArray = new int[] { 16, 4, 10, 14, 7, 9, 3, 2, 8, 1 };
+        int[] intArray = new int[] { 12, 45, 66, 85, 17, 47, 68, 2 };
         HeapSort ob = new HeapSort();
         System.out.println("before HeapSort:");
         ob.printArray(intArray);
