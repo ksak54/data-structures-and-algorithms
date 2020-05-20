@@ -1,4 +1,3 @@
-
 public class HeapSort {
     void buildMaxHeap(int[] A) {
         int heap_size = A.length - 1;
