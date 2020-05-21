@@ -8,14 +8,24 @@ class Stack {
         MAX = size;
     }
 
-    void pop() {
+    boolean isEmpty() {
+        if (top < 0) {
+            System.out.println("The Stack is Empty");
+            return true;
+        } else
+            return false;
+    }
+
+    int pop() {
         if (top < 0) {
             System.out.println("The Stack is already empty (Stack Underflow)");
+            return 0;
 
         } else {
-
+            int m = ar[top];
             top--;
-
+            System.out.println("Popped From Stack: " + m);
+            return m;
         }
 
     }
@@ -25,7 +35,7 @@ class Stack {
             System.out.println("The Stack is already full (Stack Overflow)");
 
         } else {
-
+            System.out.println("Pushed to Stack:" + m);
             ar[++top] = m;
         }
 
@@ -44,30 +54,27 @@ class Stack {
     void printArray() {
         System.out.println("");
         System.out.println("The Stack is: ");
-
         for (int i = 0; i <= top; i++) {
             System.out.print(ar[i] + " ");
         }
+        System.out.println("");
+
     }
 
     public static void main(String[] args) {
         Stack ob = new Stack(10);
-        // int[] ar = new int[10];
-        for (int i = 0; i < 10; i++) {
-            ob.push(i * 5);
-            ob.printArray();
-
-        }
-        ob.push(55);
+        ob.push(5);
+        ob.printArray();
+        ob.push(17);
         ob.printArray();
 
-        for (int i = 0; i < 10; i++) {
-
-            ob.pop();
-        }
+        ob.push(14);
         ob.printArray();
-        ob.pop();
+
+        int c = ob.pop();
+        ob.printArray();
+
+        System.out.println("The element deleted was: " + c);
 
     }
-
 }
