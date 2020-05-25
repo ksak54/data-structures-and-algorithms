@@ -1,59 +1,46 @@
+
 public class HeapSort {
-    void buildMaxHeap(int[] A) {
-        int heap_size = A.length - 1;
-        // for (int i = A.length / 2 - 1; i >= 0; i--) {
-
-        // }
-        maxHeapify(A, heap_size / 2, heap_size);
-    }
-
-    void maxHeapify(int[] A, int i, int heapsize) {
-        int l = left(i);
-        int r = right(i);
-        int key = A[i];
+    public static void maxHeapify(int[] ar, int i, int heapsize) {
+        int l = 2 * i + 1;
+        int r = 2 * i + 2;
+        int key = ar[i];
         int largest;
-        if (l <= heapsize && A[l] > A[i]) {
+        if (l < heapsize - 1 && ar[l] > ar[i])
             largest = l;
-        } else
+        else
             largest = i;
-
-        if (r <= heapsize && A[r] > A[largest]) {
+        if (r < heapsize - 1 && ar[r] > ar[largest])
             largest = r;
-        }
         if (largest != i) {
-            A[i] = A[largest];
-            A[largest] = key;
-            maxHeapify(A, largest, heapsize);
-        }
-        if (i > 0 && largest == i) {
-            maxHeapify(A, largest - 1, heapsize);
+            ar[i] = ar[largest];
+            ar[largest] = key;
+            maxHeapify(ar, largest, heapsize);
         }
 
     }
 
-    void heap_sort(int[] A) {
-        int heapsize = A.length - 1;
-        buildMaxHeap(A);
-        for (int i = A.length - 1; i > 0; i--) {
+    public static void buildMaxHeap(int[] ar) {
 
-            int key = A[0];
-            A[0] = A[i];
-            A[i] = key;
+        for (int i = (ar.length - 1) / 2; i >= 0; i--) {
+            maxHeapify(ar, i, ar.length - 1);
+        }
+    }
+
+    public static void heapSort(int[] ar) {
+        buildMaxHeap(ar);
+        int key;
+        int heapsize = ar.length - 1;
+        for (int i = ar.length - 1; i > 0; i--) {
+            key = ar[i];
+            ar[i] = ar[0];
+            ar[0] = key;
             heapsize--;
-            maxHeapify(A, heapsize / 2, heapsize);
+            maxHeapify(ar, 0, heapsize);
 
         }
     }
 
-    int left(int i) {
-        return (2 * i + 1);
-    }
-
-    int right(int i) {
-        return (2 * i + 2);
-    }
-
-    void printArray(int[] ar) {
+    public static void printArray(int[] ar) {
         for (int i : ar) {
             System.out.print(i + "  ");
 
@@ -62,13 +49,13 @@ public class HeapSort {
     }
 
     public static void main(String[] args) {
-        int[] intArray = new int[] { 12, 45, 66, 85, 17, 47, 68, 2 };
-        HeapSort ob = new HeapSort();
-        System.out.println("before HeapSort:");
-        ob.printArray(intArray);
-        System.out.println("\nAfter HeapSort:");
-        ob.heap_sort(intArray);
-        ob.printArray(intArray);
+        System.out.println("Hello World");
 
+        int[] ar = { 16, 4, 10, 14, 7, 9, 3, 2, 8, 1 };
+        buildMaxHeap(ar);
+        printArray(ar);
+        heapSort(ar);
+
+        printArray(ar);
     }
 }
