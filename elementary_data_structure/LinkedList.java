@@ -79,10 +79,12 @@ public class LinkedList {
         Node head = list.head;
         Node cur_node = list.head.next;
         int i = 0;
-        int length = listLength(list);
-        if (pos < listLength(list)) {
+
+        if (0 < pos && pos < listLength(list)) {
             if (pos == 1) {
                 deleteByKey(list, head.data);
+                System.out.println(pos + " position element found and deleted");
+
             } else {
                 while (i < pos - 2) {
                     cur_node = cur_node.next;
@@ -91,6 +93,7 @@ public class LinkedList {
                 }
                 head.next = cur_node.next;
             }
+            System.out.println(pos + " position element found and deleted");
         } else
             System.out.println("\nERROR: Index Out of Bound");
     }
@@ -120,7 +123,7 @@ public class LinkedList {
         // deleteByKey(list, 6);
         // deleteByKey(list, 7);
 
-        deleteByPosition(list, 9);
+        deleteByPosition(list, 0);
 
         printLinkedList(list);
 
