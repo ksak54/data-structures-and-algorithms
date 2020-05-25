@@ -42,7 +42,7 @@ public class LinkedList {
 
     }
 
-    public static void delete(LinkedList list, int key) {
+    public static void deleteByKey(LinkedList list, int key) {
         Node del_node = list.head.next;
         Node prev = list.head;
         if (list.head.data == key) {
@@ -65,13 +65,43 @@ public class LinkedList {
 
     }
 
+    public static int listLength(LinkedList list) {
+        Node traverse = list.head;
+        int length = 0;
+        while (traverse != null) {
+            traverse = traverse.next;
+            length++;
+        }
+        return length;
+    }
+
+    public static void deleteByPosition(LinkedList list, int pos) {
+        Node head = list.head;
+        Node cur_node = list.head.next;
+        int i = 0;
+        int length = listLength(list);
+        if (pos < listLength(list)) {
+            if (pos == 1) {
+                deleteByKey(list, head.data);
+            } else {
+                while (i < pos - 2) {
+                    cur_node = cur_node.next;
+                    head = head.next;
+                    i++;
+                }
+                head.next = cur_node.next;
+            }
+        } else
+            System.out.println("\nERROR: Index Out of Bound");
+    }
+
     public static void main(String[] args) {
 
         LinkedList list = new LinkedList();
-        // list = insert(list, 1);
-        // list = insert(list, 2);
-        // list = insert(list, 3);
-        // list = insert(list, 4);
+        list = insert(list, 1);
+        list = insert(list, 2);
+        list = insert(list, 3);
+        list = insert(list, 4);
         list = insert(list, 5);
         list = insert(list, 6);
         list = insert(list, 7);
@@ -79,16 +109,18 @@ public class LinkedList {
 
         printLinkedList(list);
 
-        delete(list, 1);
-        delete(list, 2);
-        delete(list, 3);
-        delete(list, 4);
-        delete(list, 5);
-        // delete(list, 6);
-        // delete(list, 7);
-        delete(list, 8);
-        delete(list, 6);
-        delete(list, 7);
+        // deleteByKey(list, 1);
+        // deleteByKey(list, 2);
+        // deleteByKey(list, 3);
+        // deleteByKey(list, 4);
+        // deleteByKey(list, 5);
+        // deleteByKey(list, 6);
+        // deleteByKey(list, 7);
+        // deleteByKey(list, 8);
+        // deleteByKey(list, 6);
+        // deleteByKey(list, 7);
+
+        deleteByPosition(list, 9);
 
         printLinkedList(list);
 
