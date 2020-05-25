@@ -8,7 +8,7 @@ public class InsertionSort {
 
     }
 
-    void insertion_sort(int[] ar) {
+    void insertionSort(int[] ar) {
         for (int j = 2; j < ar.length; j++) {
             int key = ar[j];
             int i = j - 1;
@@ -26,7 +26,7 @@ public class InsertionSort {
         int[] intArray = new int[] { 25, 46, 18, 75, 36, 24, 15, 25, 54, 99 };
         InsertionSort ob = new InsertionSort();
         ob.printArray(intArray, "Before Sorting");
-        ob.insertion_sort(intArray);
+        ob.insertionSort(intArray);
         ob.printArray(intArray, "After Sorting");
     }
 }

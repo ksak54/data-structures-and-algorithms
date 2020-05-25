@@ -8,7 +8,7 @@ public class MergeSort {
     public MergeSort(int[] ar, int low) {
         MergeSort ob = new MergeSort();
         ob.printArray(ar, "Before Sorting");
-        ob.merge_sort(ar, 0, ar.length - 1);
+        ob.mergeSort(ar, 0, ar.length - 1);
         ob.printArray(ar, "After Sorting");
     }
 
@@ -20,11 +20,11 @@ public class MergeSort {
         }
     }
 
-    void merge_sort(int[] ar, int l, int r) {
+    void mergeSort(int[] ar, int l, int r) {
         if (l < r) {
             int m = (l + r) / 2;
-            merge_sort(ar, l, m);
-            merge_sort(ar, m + 1, r);
+            mergeSort(ar, l, m);
+            mergeSort(ar, m + 1, r);
             merge(ar, l, m, r);
         }
     }
@@ -69,7 +69,7 @@ public class MergeSort {
         int[] intArray = new int[] { 25, 46, 18, 75, 36, 24, 15, 25, 54, 99 };
         MergeSort ob = new MergeSort();
         ob.printArray(intArray, "Before Sorting");
-        ob.merge_sort(intArray, 0, intArray.length - 1);
+        ob.mergeSort(intArray, 0, intArray.length - 1);
         ob.printArray(intArray, "After Sorting");
     }
 }

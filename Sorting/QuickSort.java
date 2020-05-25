@@ -1,10 +1,10 @@
 public class QuickSort {
-    void quick_sort(int[] A, int p, int r) {
+    void quickSort(int[] A, int p, int r) {
         if (p < r) // To avoid (0,0) element partition
         {
             int q = partition(A, p, r);
-            quick_sort(A, p, q - 1);
-            quick_sort(A, q + 1, r);
+            quickSort(A, p, q - 1);
+            quickSort(A, q + 1, r);
         }
     }
 
@@ -40,7 +40,7 @@ public class QuickSort {
         System.out.println("Array before sorting: ");
         ob.printArray(intArray);
         System.out.println("Array after sorting: ");
-        ob.quick_sort(intArray, 0, intArray.length - 1);
+        ob.quickSort(intArray, 0, intArray.length - 1);
         ob.printArray(intArray);
 
     }
