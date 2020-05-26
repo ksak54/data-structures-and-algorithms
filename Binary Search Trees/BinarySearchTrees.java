@@ -15,7 +15,7 @@ public class BinarySearchTrees {
         }
     }
 
-    public static Node searchByKey(BinarySearchTrees tree, int key) {
+    public static Node searchByKey(BinarySearchTrees tree, int key) throws NullPointerException {
         Node searchNode = tree.root;
         while (searchNode != null && searchNode.data != key) {
             if (searchNode.data > key) {
@@ -29,20 +29,20 @@ public class BinarySearchTrees {
             return searchNode;
     }
 
-    public static Node treeMaximum(BinarySearchTrees tree) {
+    public static Node treeMinimum(BinarySearchTrees tree, Node x) {
         System.out.print("\nThe minimum value is: ");
-        Node traverse = tree.root;
+        Node traverse = x;
         Node maxNode = null;
         while (traverse != null) {
             maxNode = traverse;
-            traverse = traverse.right;
+            traverse = traverse.left;
         }
         return maxNode;
     }
 
-    public static Node treeMinimum(BinarySearchTrees tree, Node x) {
-        System.out.print("\nThe minimum value is: ");
-        Node traverse = tree.root;
+    public static Node treeMaximum(BinarySearchTrees tree, Node x) {
+        System.out.print("\nThe maximum value is: ");
+        Node traverse = x;
         Node minNode = null;
         while (traverse != null) {
             minNode = traverse;
@@ -51,16 +51,24 @@ public class BinarySearchTrees {
         return minNode;
     }
 
-    public static Node successor(BinarySearchTrees tree, Node x) {
+    public static Node successor(BinarySearchTrees tree, Node x) throws NullPointerException {
+        Node m = x;
         if (x.right != null) {
             return treeMinimum(tree, x);
         }
         Node y = x.parent;
         while (y != null && x == y.right) {
-            y = x.parent;
+
             x = y;
+            y = y.parent;
         }
-        return y;
+        if (y == null) {
+            System.out.println("\nNo successor found!! (Largest node)");
+            return null;
+        } else {
+            System.out.print("Sucessor of " + m.data + ": ");
+            return y;
+        }
     }
 
     public static void insert(BinarySearchTrees tree, int data) {
@@ -84,6 +92,10 @@ public class BinarySearchTrees {
         }
     }
 
+    public static void delete(int data) {
+
+    }
+
     public static void inorderTreeWalk(Node x) {
 
         if (x != null) {
@@ -105,6 +117,14 @@ public class BinarySearchTrees {
         insert(tree, 2);
         System.out.println("\nThe tree is (inorder): ");
         inorderTreeWalk(tree.root);
-        System.out.print(treeMaximum(tree).data);
+        System.out.print(treeMaximum(tree, tree.root).data);
+        System.out.println();
+
+        try {
+            System.out.print(successor(tree, searchByKey(tree, 7)).data);
+        } catch (NullPointerException ex) {
+
+        }
+
     }
 }
