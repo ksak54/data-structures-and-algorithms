@@ -1,6 +1,7 @@
 public class BinarySearchTrees {
     Node root = null;
 
+    // Node class
     public static class Node {
         Node left;
         Node right;
@@ -15,6 +16,7 @@ public class BinarySearchTrees {
         }
     }
 
+    // search a node in a tree by key
     public static Node searchByKey(BinarySearchTrees tree, int key) throws NullPointerException {
         Node searchNode = tree.root;
         while (searchNode != null && searchNode.data != key) {
@@ -29,6 +31,7 @@ public class BinarySearchTrees {
             return searchNode;
     }
 
+    // Finding the minimum value Node from a given node
     public static Node treeMinimum(BinarySearchTrees tree, Node x) {
 
         Node traverse = x;
@@ -40,6 +43,7 @@ public class BinarySearchTrees {
         return maxNode;
     }
 
+    // Finding the maximum value Node from a give node
     public static Node treeMaximum(BinarySearchTrees tree, Node x) {
 
         Node traverse = x;
@@ -51,6 +55,7 @@ public class BinarySearchTrees {
         return minNode;
     }
 
+    // Finding the next least maximum value of a given node in tree
     public static Node successor(BinarySearchTrees tree, Node x) throws NullPointerException {
         Node m = x;
         if (x.right != null) {
@@ -71,6 +76,7 @@ public class BinarySearchTrees {
         }
     }
 
+    // Adding a Node to the tree
     public static void insert(BinarySearchTrees tree, int data) {
         Node traverse = tree.root;
         Node p = null;
@@ -92,6 +98,7 @@ public class BinarySearchTrees {
         }
     }
 
+    // Changing child of parent of Node to be deleted
     public static void transplant(BinarySearchTrees tree, Node del, Node rep) {
         if (del.parent == null) {
             tree.root = rep;
@@ -104,6 +111,7 @@ public class BinarySearchTrees {
             rep.parent = del.parent;
     }
 
+    // deletion of Node
     public static void deleteNode(BinarySearchTrees tree, int data) {
         Node del = searchByKey(tree, data);
         if (del.right == null) {
