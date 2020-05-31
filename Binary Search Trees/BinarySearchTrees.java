@@ -123,6 +123,23 @@ public class BinarySearchTrees {
         }
     }
 
+    // Invert tree
+    public static void invert(Node x) {
+        if (x != null) {
+            swap(x);
+            invert(x.left);
+            invert(x.right);
+        }
+    }
+
+    // swapping child nodes
+    public static void swap(Node x) {
+        Node temp = x.left;
+        x.left = x.right;
+        x.right = temp;
+    }
+
+    // printing tree in indorder
     public static void inorderTreeWalk(Node x) {
 
         if (x != null) {
@@ -161,6 +178,9 @@ public class BinarySearchTrees {
         System.out.println("\nDeleting Node with data = 6");
         deleteNode(tree, 6);
         System.out.println("\nAfter deletion of Node with data = 6 The tree is (inorder): ");
+        inorderTreeWalk(tree.root);
+
+        invert(tree.root);
         inorderTreeWalk(tree.root);
     }
 }
